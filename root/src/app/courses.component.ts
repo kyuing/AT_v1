@@ -1,4 +1,4 @@
-
+import { CoursesService } from './course/courses.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -19,7 +19,22 @@ import { Component } from '@angular/core';
 })
 export class CoursesComponent {
   title = "List of courses";
-  courses = ["courses1", "courses2", "courses3"];
+  courses;
+
+
+  //dependancy injection
+  constructor(service: CoursesService) {
+
+    // let service = new CoursesService();  //coupled approach    
+    this.courses = service.getCources();
+  }
+
+
+  // courses = ["courses1", "courses2", "courses3"];
+  
+  //logic for calling an HTTP service
+
+  
   // getTitle() {
   //   return this.title;
   // }
